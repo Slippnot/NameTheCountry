@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: hsl(270, 100%, 5%);
+}
+#name {
+  color: aliceblue;
+  font-size: 3rem;
+  font-weight: bolder;
+  padding-bottom: 1rem;
+}
+#options {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  grid-template-rows: repeat(2, 200px);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+}
+.optionBTN {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 6px solid black;
+  border-radius: 6px;
+  background-color: hsl(34, 57%, 70%);
+  font-size: 33px;
+  font-weight: bold;
+  padding: 1.3rem 1.3rem;
+  cursor: pointer;
+}
+.optionBTN:hover {
+  background-color: hsl(35, 42%, 72%);
+}
+.optionBTN:active {
+  background-color: hsl(34, 100%, 90%);
+}
+#countryFlag {
+  height: 600px;
+  width: 1000px;
+}
