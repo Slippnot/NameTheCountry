@@ -3,46 +3,102 @@
   padding: 0;
 }
 body {
+  text-align: center;
+  background-color: hsl(270, 100%, 5%);
   display: flex;
   flex-direction: column;
-  text-align: center;
+  flex-wrap: wrap;
   align-items: center;
-  background-color: hsl(270, 100%, 5%);
+  justify-content: center;
+  text-align: center;
 }
-#name {
-  color: aliceblue;
+header {
+  min-height: 80px;
+}
+.wrapper {
+  max-width: 811px;
+  margin-inline: auto;
+}
+.scores {
+  margin: 23px;
+}
+.optionBTN, #name {
   font-size: 3rem;
   font-weight: bolder;
-  padding-bottom: 1rem;
 }
 #options {
   display: grid;
-  grid-template-columns: repeat(2, 200px);
-  grid-template-rows: repeat(2, 200px);
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
+  gap: 2rem;
+  grid-template-columns: 
+    repeat(auto-fit, minmax(250px, 1fr));
+}
+.optionBTN {
+  border: 6px solid aliceblue;
+  border-radius: 13px;
+  color: aliceblue;
+  background-color: hsl(0, 0%, 5%);
 }
 .optionBTN {
   margin-top: 1rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 6px solid black;
-  border-radius: 6px;
-  background-color: hsl(34, 57%, 70%);
-  font-size: 33px;
-  font-weight: bold;
-  padding: 1.3rem 1.3rem;
+  padding: 3rem 1rem;
   cursor: pointer;
 }
 .optionBTN:hover {
-  background-color: hsl(35, 42%, 72%);
+  background-color: hsl(0, 0%, 10%);
 }
 .optionBTN:active {
-  background-color: hsl(34, 100%, 90%);
+  background-color: hsl(0, 0%, 20%);
 }
 #countryFlag {
-  height: 600px;
-  width: 1000px;
+  display: block;
+  max-height: 500px;
+  max-width: 100%;
+}
+
+@media (max-width: 430px) {
+  .scores {
+    margin: 13px;
+  }
+  .optionBTN {
+    padding: 1rem 1rem;
+  }
+  #options {
+    gap: 13px;
+  }
+  #countryFlag {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+  }
+  .optionBTN, #name {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  header {
+    min-height: 53px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scores {
+    margin: 13px;
+  }
+  .optionBTN {
+    padding: 1rem 1rem;
+  }
+  #options {
+    gap: 13px;
+  }
+  .optionBTN, #name {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  header {
+    min-height: 53px;
+  }
 }

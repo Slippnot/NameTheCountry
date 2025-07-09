@@ -231,3 +231,7 @@ export const countries = [
   "Zambia",
   "Zimbabwe",
 ];
+
+export const removed = [
+  "This Is Super Rare",
+];
