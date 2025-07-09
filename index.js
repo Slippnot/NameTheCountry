@@ -31,8 +31,6 @@ function getChoices(){
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
 
-  console.log(flagAnswer);
-
   if(countries.length <= 0){
     optionBTN.forEach((e) => {
       e.style.display = `none`;
