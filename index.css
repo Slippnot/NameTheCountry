@@ -59,7 +59,7 @@ header {
   max-width: 100%;
 }
 
-@media (max-height: 932px) {
+@media (min-height: 932px) {
   header {
     min-height: 44px;
   }
