@@ -15,6 +15,11 @@ body {
 header {
   min-height: 80px;
 }
+#name, #scoreDisplay, #hiScoreDisplay {
+  font-size: 2rem;
+  font-weight: bold;
+  color: aliceblue;
+}
 .wrapper {
   max-width: 811px;
   margin-inline: auto;
@@ -22,9 +27,10 @@ header {
 .scores {
   margin: 13px;
 }
-.optionBTN, #name {
+button {
   font-size: 3rem;
   font-weight: bolder;
+  color: aliceblue;
 }
 .options {
   display: grid;
@@ -32,13 +38,13 @@ header {
   grid-template-columns: 
     repeat(auto-fit, minmax(min(250px, 100%), 1fr));
 }
-.optionBTN {
+button {
   border: 6px solid aliceblue;
   border-radius: 13px;
   color: aliceblue;
   background-color: hsl(0, 0%, 5%);
 }
-.optionBTN {
+button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -47,31 +53,33 @@ header {
   padding: 3rem 1rem;
   cursor: pointer;
 }
-.optionBTN:hover {
+button:hover {
   background-color: hsl(0, 0%, 10%);
 }
-.optionBTN:active {
+button:active {
   background-color: hsl(0, 0%, 20%);
 }
-#countryFlag {
+.flags, #countryFlag {
   display: block;
   max-height: 500px;
   max-width: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 430px) {
-  .optionBTN {
+  button {
     padding: 1rem 1rem;
   }
   .options {
     gap: 13px;
   }
-  #countryFlag {
+  .flags, #countryFlag {
     display: block;
     max-height: 300px;
     max-width: 100%;
+    object-fit: cover;
   }
-  .optionBTN, #name {
+  button {
     font-size: 2rem;
     font-weight: bold;
   }
@@ -81,13 +89,19 @@ header {
 }
 
 @media (max-width: 768px) {
-  .optionBTN {
+  button {
     padding: 1rem 1rem;
   }
   .options {
     gap: 13px;
   }
-  .optionBTN, #name {
+  .flags, #countryFlag {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  button {
     font-size: 2rem;
     font-weight: bold;
   }
