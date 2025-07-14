@@ -15,6 +15,11 @@ body {
 header {
   min-height: 80px;
 }
+#homeButton {
+  margin-top: 8px;
+  float: left;
+  cursor: pointer;
+}
 #name, #scoreDisplay, #hiScoreDisplay {
   font-size: 2rem;
   font-weight: bold;

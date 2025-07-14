@@ -12,6 +12,10 @@ export const resetBtn = document.getElementById("resetBtn");
 export const scoreDisplay = document.getElementById("scoreDisplay");
 export const hiScoreDisplay = document.getElementById("hiScoreDisplay");
 
+document.getElementById("homeButton").onclick = (() => {
+  location.reload();
+});
+
 export var playAllFlagsGamemode = false;
 option1.onclick = () => {
   playAllFlagsGamemode = true;
