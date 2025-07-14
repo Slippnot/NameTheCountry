@@ -1,29 +1,26 @@
 import { countries,removed } from "./countries.js";
+import * as global from "./globals.js";
 
-
-const countryFlag = document.getElementById("countryFlag");
-const option1 = document.getElementById("option1");
-const option2 = document.getElementById("option2");
-const option3 = document.getElementById("option3");
-const option4 = document.getElementById("option4");
-const optionBTN = document.querySelectorAll(".optionBTN");
-const resetBtn = document.getElementById("resetBtn");
-const scoreDisplay = document.getElementById("scoreDisplay");
-const hiScoreDisplay = document.getElementById("hiScoreDisplay");
-
-getChoices();
+const startPlaying = setInterval(() => {
+  if(global.playAllFlagsGamemode){
+    global.displayGameChosen();
+    playAllGamemode();
+    clearInterval(startPlaying);
+  }
+},1000);
 
 let score = 0;
 let wrong = 0;
 let hiScore = 0;
+let total = countries.length;
 
 if(localStorage.getItem("hiScoreSaved") !== null){
   let savedHiScore = JSON.parse(localStorage.getItem("hiScoreSaved"));
-  hiScoreDisplay.innerHTML = `Hi-Score: ${savedHiScore} / 205`;
+  hiScoreDisplay.innerHTML = `Hi-Score: ${savedHiScore} / ${total}`;
   hiScore = savedHiScore;
 }
 
-function getChoices(){
+function playAllGamemode(){
   
   let randomFlag = countries[Math.floor(Math.random() * countries.length)];
   let wrong1 = countries[Math.floor(Math.random() * countries.length)];
@@ -40,10 +37,6 @@ function getChoices(){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
   }
 
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
-  }
-
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
 
@@ -51,22 +44,22 @@ function getChoices(){
 
   countryFlag.src = `flags/countries/${flagQuestion}.png`;
 
-  let rng = getRandomNum();
+  let rng = global.getRandomNum();
   if(rng == 1){
-    optionChoices(flagAnswer,wrong1,wrong2,wrong3);
-    preventsTwoCorrectAnswerShowing(flagAnswer);
+    global.displayOptions(flagAnswer,wrong1,wrong2,wrong3);
+    global.preventsTwoCorrectAnswerShowing(flagAnswer);
   }
   if(rng == 2){
-    optionChoices(wrong1,flagAnswer,wrong2,wrong3);
-    preventsTwoCorrectAnswerShowing(flagAnswer);
+    global.displayOptions(wrong1,flagAnswer,wrong2,wrong3);
+    global.preventsTwoCorrectAnswerShowing(flagAnswer);
   }
   if(rng == 3){
-    optionChoices(wrong1,wrong2,flagAnswer,wrong3);
-    preventsTwoCorrectAnswerShowing(flagAnswer);
+    global.displayOptions(wrong1,wrong2,flagAnswer,wrong3);
+    global.preventsTwoCorrectAnswerShowing(flagAnswer);
   }
   if(rng == 4){
-    optionChoices(wrong1,wrong2,wrong3,flagAnswer);
-    preventsTwoCorrectAnswerShowing(flagAnswer);
+    global.displayOptions(wrong1,wrong2,wrong3,flagAnswer);
+    global.preventsTwoCorrectAnswerShowing(flagAnswer);
   }
 
   play(option1,flagAnswer,randomFlag);
@@ -82,49 +75,21 @@ function play(opt,fa,rf){
       removed.push(`${fa}`);
       countries.splice(countries.indexOf(rf), 1);
       score++;
-      scoreDisplay.innerHTML = `${score} / 205 CORRECT It Was ${fa}`;
+      scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
       if(score > hiScore){
         hiScore = score;
-        hiScoreDisplay.innerHTML = `Hi-Score: ${hiScore} / 205`;
+        hiScoreDisplay.innerHTML = `Hi-Score: ${hiScore} / ${total}`;
         localStorage.setItem("hiScoreSaved", JSON.stringify(hiScore));
       }
-      getChoices();
+      playAllGamemode();
     }
     else {
       removed.push(`${fa}`);
       countries.splice(countries.indexOf(rf), 1);
       wrong++;
-      scoreDisplay.innerHTML = `${score} / 205 WRONG It Was ${fa}`;
-      getChoices();
+      scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${fa}`;
+      playAllGamemode();
     }
-  }
-}
-
-function optionChoices(opt1,opt2,opt3,opt4){
-  option1.innerHTML = `${opt1}`;
-  option2.innerHTML = `${opt2}`;
-  option3.innerHTML = `${opt3}`;
-  option4.innerHTML = `${opt4}`;
-}
-
-function preventsTwoCorrectAnswerShowing(fa){
-  if(option1.innerHTML == fa && option2.innerHTML == fa){
-    option2.innerHTML = removed[Math.floor(Math.random() * removed.length)];
-  }
-  if(option1.innerHTML == fa && option3.innerHTML == fa){
-    option3.innerHTML = removed[Math.floor(Math.random() * removed.length)];
-  }
-  if(option1.innerHTML == fa && option4.innerHTML == fa){
-    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
-  }
-  if(option2.innerHTML == fa && option3.innerHTML == fa){
-    option3.innerHTML = removed[Math.floor(Math.random() * removed.length)];
-  }
-  if(option2.innerHTML == fa && option4.innerHTML == fa){
-    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
-  }
-  if(option3.innerHTML == fa && option4.innerHTML == fa){
-    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
   }
 }
 
@@ -133,16 +98,12 @@ function endGameAndReset(){
     optionBTN.forEach((e) => {
       e.style.display = `none`;
     });
-    countryFlag.style.display = `none`;
+    global.countryFlag.style.display = `none`;
     hiScoreDisplay.style.display = `block`;
-    scoreDisplay.innerHTML = `${score} / 205 CORRECT | INCORRECT : ${wrong}`;
+    scoreDisplay.innerHTML = `${score} / ${total} CORRECT | INCORRECT : ${wrong}`;
     resetBtn.style.display = `block`;
     resetBtn.onclick = () => {
       location.reload();
     }
   }
-}
-
-function getRandomNum(){
-  return Math.floor(Math.random() * (4 - 1 + 1)) + 1;
 }

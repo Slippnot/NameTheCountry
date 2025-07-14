@@ -232,6 +232,74 @@ export const countries = [
   "Zimbabwe",
 ];
 
+export const africanCountries = [
+  // B
+  "Benin",
+  "Botswana",
+  "Burkina Faso",
+  "Burundi",
+  // C
+  "Cabo Verde",
+  "Cameroon",
+  "Chad",
+  "Comoros",
+  "Democratic Republic of the Congo",
+  "Republic of the Congo",
+  "Cote d'Ivoire",
+  // D
+  "Djibouti",
+  // E
+  "Egypt",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Eswatini",
+  "Ethiopia",
+  // G
+  "Gabon",
+  "The Gambia",
+  "Ghana",
+  "Guinea",
+  "Guinea-Bissau",
+  // K
+  "Kenya",
+  // L
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  // M
+  "Madagascar",
+  "Malawi",
+  "Mali",
+  "Mauritania",
+  "Mauritius",
+  "Morocco",
+  "Mozambique",
+  // N
+  "Namibia",
+  "Niger",
+  "Nigeria",
+  // R
+  "Rwanda",
+  // S
+  "Sao Tome and Principe",
+  "Senegal",
+  "Seychelles",
+  "Sierra Leone",
+  "Somalia",
+  "South Africa",
+  "South Sudan",
+  "Sudan",
+  // T
+  "Tanzania",
+  "Togo",
+  "Tunisia",
+  // U
+  "Uganda",
+  // Z
+  "Zambia",
+  "Zimbabwe",
+];
+
 export const removed = [
   "This Is Super Rare",
 ];

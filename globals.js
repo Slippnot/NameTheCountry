@@ -1,0 +1,65 @@
+import { removed } from "./countries.js";
+
+export const countryFlag = document.getElementById("countryFlag");
+export const option1 = document.getElementById("option1");
+export const option2 = document.getElementById("option2");
+export const option3 = document.getElementById("option3");
+export const option4 = document.getElementById("option4");
+export const option5 = document.getElementById("option5");
+export const option6 = document.getElementById("option6");
+export const optionBTN = document.querySelectorAll(".optionBTN");
+export const resetBtn = document.getElementById("resetBtn");
+export const scoreDisplay = document.getElementById("scoreDisplay");
+export const hiScoreDisplay = document.getElementById("hiScoreDisplay");
+
+export var playAllFlagsGamemode = false;
+option1.onclick = () => {
+  playAllFlagsGamemode = true;
+}
+export var playAllAfricaFlagsGamemode = false;
+option2.onclick = () => {
+  playAllAfricaFlagsGamemode = true;
+}
+export var playAllAsiaFlagsGamemode = false;
+export var playAllNorthAmericaFlagsGamemode = false;
+export var playAllSouthAmericaFlagsGamemode = false;
+export var playAllEuropeFlagsGamemode = false;
+
+export function displayGameChosen(){
+  countryFlag.style.display = `block`;
+  scoreDisplay.style.display = `block`;
+  option5.style.display = `none`;
+  option6.style.display = `none`;
+}
+
+export function displayOptions(opt1,opt2,opt3,opt4){
+  option1.innerHTML = `${opt1}`;
+  option2.innerHTML = `${opt2}`;
+  option3.innerHTML = `${opt3}`;
+  option4.innerHTML = `${opt4}`;
+}
+
+export function preventsTwoCorrectAnswerShowing(fa){
+  if(option1.innerHTML == fa && option2.innerHTML == fa){
+    option2.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+  if(option1.innerHTML == fa && option3.innerHTML == fa){
+    option3.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+  if(option1.innerHTML == fa && option4.innerHTML == fa){
+    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+  if(option2.innerHTML == fa && option3.innerHTML == fa){
+    option3.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+  if(option2.innerHTML == fa && option4.innerHTML == fa){
+    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+  if(option3.innerHTML == fa && option4.innerHTML == fa){
+    option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
+  }
+}
+
+export function getRandomNum(){
+  return Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+}
