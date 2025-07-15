@@ -1,30 +1,30 @@
-import { africanCountries,removed } from "./countries.js";
+import { northAmericanCountries,removed } from "./countries.js";
 import * as global from "./globals.js";
 
 const startPlaying = setInterval(() => {
-  if(global.playAllAfricaFlagsGamemode){
+  if(global.playAllNorthAmericaFlagsGamemode){
     global.displayGameChosen();
-    playAfricanGamemode();
+    playNorthAmericanGamemode();
     clearInterval(startPlaying);
   }
-},1000);
+});
 
 let score = 0;
 let wrong = 0;
-let africaHiScore = 0;
-let total = africanCountries.length;
+let naHiScore = 0;
+let total = northAmericanCountries.length;
 
-if(localStorage.getItem("africaHiScoreSaved") !== null){
-  let savedAfricaHiScore = JSON.parse(localStorage.getItem("africaHiScoreSaved"));
-  global.africaHiScoreDisplay.innerHTML = `Africa Hi-Score: ${savedAfricaHiScore} / ${total}`;
-  africaHiScore = savedAfricaHiScore;
+if(localStorage.getItem("northAmericaHiScoreSaved") !== null){
+  let savedNaHiScore = JSON.parse(localStorage.getItem("northAmericaHiScoreSaved"));
+  global.northAmericaHiScoreDisplay.innerHTML = `North America HiScore ${savedNaHiScore} / ${total}`;
+  naHiScore = savedNaHiScore;
 }
 
-function playAfricanGamemode(){
-  let randomFlag = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong1 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong2 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong3 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
+function playNorthAmericanGamemode(){
+  let randomFlag = northAmericanCountries[Math.floor(Math.random() * northAmericanCountries.length)];
+  let wrong1 = northAmericanCountries[Math.floor(Math.random() * northAmericanCountries.length)];
+  let wrong2 = northAmericanCountries[Math.floor(Math.random() * northAmericanCountries.length)];
+  let wrong3 = northAmericanCountries[Math.floor(Math.random() * northAmericanCountries.length)];
 
   if(wrong1 == wrong2 || wrong1 == wrong3){
     wrong1 = removed[Math.floor(Math.random() * removed.length)];
@@ -38,7 +38,7 @@ function playAfricanGamemode(){
 
   if(removed.includes("This Is Super Rare")){
     removed.shift();
-  } // move somewhere else ??
+  }
 
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
@@ -75,28 +75,28 @@ function play(opt,fa,rf){
   opt.onclick = () => {
     if(opt.innerHTML == fa){
       removed.push(`${fa}`);
-      africanCountries.splice(africanCountries.indexOf(rf), 1);
+      northAmericanCountries.splice(northAmericanCountries.indexOf(rf), 1);
       score++;
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
-      if(score > africaHiScore){
-        africaHiScore = score;
-        global.africaHiScoreDisplay.innerHTML = `Africa Hi-Score: ${africaHiScore} / ${total}`;
-        localStorage.setItem("africaHiScoreSaved", JSON.stringify(africaHiScore));
+      if(score > naHiScore){
+        naHiScore = score;
+        global.northAmericaHiScoreDisplay.innerHTML = `North America HiScore ${naHiScore} / ${total}`;
+        localStorage.setItem("northAmericaHiScoreSaved", JSON.stringify(naHiScore));
       }
-      playAfricanGamemode();
+      playNorthAmericanGamemode();
     }
     else {
       removed.push(`${fa}`);
-      africanCountries.splice(africanCountries.indexOf(rf), 1);
+      northAmericanCountries.splice(northAmericanCountries.indexOf(rf), 1);
       wrong++;
       scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${fa}`;
-      playAfricanGamemode();
+      playNorthAmericanGamemode();
     }
   }
 }
 
 function endGameAndReset(){
-  if(africanCountries.length <= 0){
+  if(northAmericanCountries.length <= 0){
     global.optionBTN.forEach((e) => {
       e.style.display = `none`;
     });

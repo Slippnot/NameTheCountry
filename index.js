@@ -21,7 +21,6 @@ if(localStorage.getItem("hiScoreSaved") !== null){
 }
 
 function playAllGamemode(){
-  
   let randomFlag = countries[Math.floor(Math.random() * countries.length)];
   let wrong1 = countries[Math.floor(Math.random() * countries.length)];
   let wrong2 = countries[Math.floor(Math.random() * countries.length)];
@@ -66,7 +65,6 @@ function playAllGamemode(){
   play(option2,flagAnswer,randomFlag);
   play(option3,flagAnswer,randomFlag);
   play(option4,flagAnswer,randomFlag);
-
 }
 
 function play(opt,fa,rf){
@@ -95,15 +93,11 @@ function play(opt,fa,rf){
 
 function endGameAndReset(){
   if(countries.length <= 0){
-    optionBTN.forEach((e) => {
+    global.optionBTN.forEach((e) => {
       e.style.display = `none`;
     });
     global.countryFlag.style.display = `none`;
-    hiScoreDisplay.style.display = `block`;
+    global.makeHiScoresVisible();
     scoreDisplay.innerHTML = `${score} / ${total} CORRECT | INCORRECT : ${wrong}`;
-    resetBtn.style.display = `block`;
-    resetBtn.onclick = () => {
-      location.reload();
-    }
   }
 }

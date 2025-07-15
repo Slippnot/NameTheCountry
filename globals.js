@@ -11,6 +11,11 @@ export const optionBTN = document.querySelectorAll(".optionBTN");
 export const resetBtn = document.getElementById("resetBtn");
 export const scoreDisplay = document.getElementById("scoreDisplay");
 export const hiScoreDisplay = document.getElementById("hiScoreDisplay");
+export const africaHiScoreDisplay = document.getElementById("africaHiScoreDisplay");
+export const asiaHiScoreDisplay = document.getElementById("asiaHiScoreDisplay");
+export const northAmericaHiScoreDisplay = document.getElementById("northAmericaHiScoreDisplay");
+export const southAmericaHiScoreDisplay = document.getElementById("southAmericaHiScoreDisplay");
+export const europeHiScoreDisplay = document.getElementById("europeHiScoreDisplay");
 
 document.getElementById("homeButton").onclick = (() => {
   location.reload();
@@ -25,9 +30,22 @@ option2.onclick = () => {
   playAllAfricaFlagsGamemode = true;
 }
 export var playAllAsiaFlagsGamemode = false;
+option3.onclick = () => {
+  playAllAsiaFlagsGamemode = true;
+}
 export var playAllNorthAmericaFlagsGamemode = false;
+option4.onclick = () => {
+  playAllNorthAmericaFlagsGamemode = true;
+}
 export var playAllSouthAmericaFlagsGamemode = false;
+option5.onclick = () => {
+  playAllSouthAmericaFlagsGamemode = true;
+}
 export var playAllEuropeFlagsGamemode = false;
+option6.onclick = () => {
+  playAllEuropeFlagsGamemode = true;
+}
+
 
 export function displayGameChosen(){
   countryFlag.style.display = `block`;
@@ -62,6 +80,15 @@ export function preventsTwoCorrectAnswerShowing(fa){
   if(option3.innerHTML == fa && option4.innerHTML == fa){
     option4.innerHTML = removed[Math.floor(Math.random() * removed.length)];
   }
+}
+
+export function makeHiScoresVisible(){
+  hiScoreDisplay.style.display = `block`;
+  africaHiScoreDisplay.style.display = `block`;
+  asiaHiScoreDisplay.style.display = `block`;
+  northAmericaHiScoreDisplay.style.display = `block`;
+  southAmericaHiScoreDisplay.style.display = `block`;
+  europeHiScoreDisplay.style.display = `block`;
 }
 
 export function getRandomNum(){

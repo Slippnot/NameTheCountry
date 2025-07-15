@@ -1,30 +1,30 @@
-import { africanCountries,removed } from "./countries.js";
+import { asianCountries,removed } from "./countries.js";
 import * as global from "./globals.js";
 
 const startPlaying = setInterval(() => {
-  if(global.playAllAfricaFlagsGamemode){
+  if(global.playAllAsiaFlagsGamemode){
     global.displayGameChosen();
-    playAfricanGamemode();
+    playAsianGamemode();
     clearInterval(startPlaying);
   }
-},1000);
+});
 
 let score = 0;
 let wrong = 0;
-let africaHiScore = 0;
-let total = africanCountries.length;
+let asiaHiScore = 0;
+let total = asianCountries.length;
 
-if(localStorage.getItem("africaHiScoreSaved") !== null){
-  let savedAfricaHiScore = JSON.parse(localStorage.getItem("africaHiScoreSaved"));
-  global.africaHiScoreDisplay.innerHTML = `Africa Hi-Score: ${savedAfricaHiScore} / ${total}`;
-  africaHiScore = savedAfricaHiScore;
+if(localStorage.getItem("asiaHiScoreSaved") !== null){
+  let savedAsiaHiScore = JSON.parse(localStorage.getItem("asiaHiScoreSaved"));
+  global.asiaHiScoreDisplay.innerHTML = `Asia HiScore ${savedAsiaHiScore} / ${total}`;
+  asiaHiScore = savedAsiaHiScore;
 }
 
-function playAfricanGamemode(){
-  let randomFlag = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong1 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong2 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
-  let wrong3 = africanCountries[Math.floor(Math.random() * africanCountries.length)];
+function playAsianGamemode(){
+  let randomFlag = asianCountries[Math.floor(Math.random() * asianCountries.length)];
+  let wrong1 = asianCountries[Math.floor(Math.random() * asianCountries.length)];
+  let wrong2 = asianCountries[Math.floor(Math.random() * asianCountries.length)];
+  let wrong3 = asianCountries[Math.floor(Math.random() * asianCountries.length)];
 
   if(wrong1 == wrong2 || wrong1 == wrong3){
     wrong1 = removed[Math.floor(Math.random() * removed.length)];
@@ -38,7 +38,7 @@ function playAfricanGamemode(){
 
   if(removed.includes("This Is Super Rare")){
     removed.shift();
-  } // move somewhere else ??
+  }
 
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
@@ -75,28 +75,28 @@ function play(opt,fa,rf){
   opt.onclick = () => {
     if(opt.innerHTML == fa){
       removed.push(`${fa}`);
-      africanCountries.splice(africanCountries.indexOf(rf), 1);
+      asianCountries.splice(asianCountries.indexOf(rf), 1);
       score++;
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
-      if(score > africaHiScore){
-        africaHiScore = score;
-        global.africaHiScoreDisplay.innerHTML = `Africa Hi-Score: ${africaHiScore} / ${total}`;
-        localStorage.setItem("africaHiScoreSaved", JSON.stringify(africaHiScore));
+      if(score > asiaHiScore){
+        asiaHiScore = score;
+        global.asiaHiScoreDisplay.innerHTML = `Asia HiScore ${asiaHiScore} / ${total}`;
+        localStorage.setItem("asiaHiScoreSaved", JSON.stringify(asiaHiScore));
       }
-      playAfricanGamemode();
+      playAsianGamemode();
     }
     else {
       removed.push(`${fa}`);
-      africanCountries.splice(africanCountries.indexOf(rf), 1);
+      asianCountries.splice(asianCountries.indexOf(rf), 1);
       wrong++;
       scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${fa}`;
-      playAfricanGamemode();
+      playAsianGamemode();
     }
   }
 }
 
 function endGameAndReset(){
-  if(africanCountries.length <= 0){
+  if(asianCountries.length <= 0){
     global.optionBTN.forEach((e) => {
       e.style.display = `none`;
     });
