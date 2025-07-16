@@ -45,7 +45,7 @@ function playAfricanGamemode(){
 
   endGameAndReset();
 
-  countryFlag.src = `flags/countries/${flagQuestion}.png`;
+  countryFlag.src = `flags/drawnCountries/${flagQuestion}.png`;
 
   let rng = global.getRandomNum();
   if(rng == 1){
