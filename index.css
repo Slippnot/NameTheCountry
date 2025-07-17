@@ -39,7 +39,7 @@ button {
 }
 .options {
   display: grid;
-  gap: 2rem;
+  gap: 13px;
   grid-template-columns: 
     repeat(auto-fit, minmax(min(250px, 100%), 1fr));
 }
@@ -55,7 +55,7 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 3rem 1rem;
+  padding: 1rem 1rem;
   cursor: pointer;
 }
 button:hover {
@@ -72,12 +72,6 @@ button:active {
 }
 
 @media (max-width: 430px) {
-  button {
-    padding: 1rem 1rem;
-  }
-  .options {
-    gap: 13px;
-  }
   .flags, #countryFlag {
     display: block;
     max-height: 300px;
@@ -87,19 +81,10 @@ button:active {
   button {
     font-size: 2rem;
     font-weight: bold;
-  }
-  header {
-    min-height: 53px;
   }
 }
 
 @media (max-width: 768px) {
-  button {
-    padding: 1rem 1rem;
-  }
-  .options {
-    gap: 13px;
-  }
   .flags, #countryFlag {
     display: block;
     max-height: 300px;
@@ -109,8 +94,5 @@ button:active {
   button {
     font-size: 2rem;
     font-weight: bold;
-  }
-  header {
-    min-height: 53px;
   }
 }

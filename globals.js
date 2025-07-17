@@ -91,6 +91,21 @@ export function makeHiScoresVisible(){
   europeHiScoreDisplay.style.display = `block`;
 }
 
+export function endGameAndReset(countryArray,score,total,wrong){
+  if(countryArray.length <= 0){
+    optionBTN.forEach((e) => {
+      e.style.display = `none`;
+    });
+    countryFlag.style.display = `none`;
+    makeHiScoresVisible();
+    scoreDisplay.innerHTML = `${score} / ${total} CORRECT | INCORRECT : ${wrong}`;
+  }
+}
+
+export function displayImage(folderName,flagQuestion){
+  countryFlag.src = `flags/${folderName}/${flagQuestion}.png`;
+}
+
 export function getRandomNum(){
   return Math.floor(Math.random() * (4 - 1 + 1)) + 1;
 }

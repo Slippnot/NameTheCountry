@@ -36,12 +36,16 @@ function playAllGamemode(){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
   }
 
+  if(removed.includes("This Is Super Rare")){
+    removed.shift();
+  }
+
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
 
-  endGameAndReset();
+  global.endGameAndReset(countries,score,total,wrong);
 
-  countryFlag.src = `flags/drawnCountries/${flagQuestion}.png`;
+  global.displayImage("drawnCountries",flagQuestion);
 
   let rng = global.getRandomNum();
   if(rng == 1){
@@ -88,16 +92,5 @@ function play(opt,fa,rf){
       scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${fa}`;
       playAllGamemode();
     }
-  }
-}
-
-function endGameAndReset(){
-  if(countries.length <= 0){
-    global.optionBTN.forEach((e) => {
-      e.style.display = `none`;
-    });
-    global.countryFlag.style.display = `none`;
-    global.makeHiScoresVisible();
-    scoreDisplay.innerHTML = `${score} / ${total} CORRECT | INCORRECT : ${wrong}`;
   }
 }
