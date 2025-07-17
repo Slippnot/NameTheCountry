@@ -106,7 +106,7 @@ export function endGameAndReset(countryArray,score,total,wrong){
 
 export function displayImage(folderName,flagQuestion){
   countryFlag.src = `flags/${folderName}/${flagQuestion}.png`;
-  countryFlag.alt = `${flagQuestion}`;
+  countryFlag.alt = `Image Not loading. Answer is ${flagQuestion}`;
 }
 
 export function setAndDisplayWrongAndCorrectAnswers(flagAnswer,wrong1,wrong2,wrong3){
