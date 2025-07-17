@@ -47,23 +47,7 @@ function playSouthAmericanGamemode(){
 
   global.displayImage("drawnCountries",flagQuestion);
 
-  let rng = global.getRandomNum();
-  if(rng == 1){
-    global.displayOptions(flagAnswer,wrong1,wrong2,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 2){
-    global.displayOptions(wrong1,flagAnswer,wrong2,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 3){
-    global.displayOptions(wrong1,wrong2,flagAnswer,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 4){
-    global.displayOptions(wrong1,wrong2,wrong3,flagAnswer);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
+  global.setAndDisplayWrongAndCorrectAnswers(flagAnswer,wrong1,wrong2,wrong3);
 
   play(option1,flagAnswer,randomFlag);
   play(option2,flagAnswer,randomFlag);

@@ -47,37 +47,21 @@ function playAllGamemode(){
 
   global.displayImage("drawnCountries",flagQuestion);
 
-  let rng = global.getRandomNum();
-  if(rng == 1){
-    global.displayOptions(flagAnswer,wrong1,wrong2,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 2){
-    global.displayOptions(wrong1,flagAnswer,wrong2,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 3){
-    global.displayOptions(wrong1,wrong2,flagAnswer,wrong3);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
-  if(rng == 4){
-    global.displayOptions(wrong1,wrong2,wrong3,flagAnswer);
-    global.preventsTwoCorrectAnswerShowing(flagAnswer);
-  }
+  global.setAndDisplayWrongAndCorrectAnswers(flagAnswer,wrong1,wrong2,wrong3);
 
-  play(option1,flagAnswer,randomFlag);
-  play(option2,flagAnswer,randomFlag);
-  play(option3,flagAnswer,randomFlag);
-  play(option4,flagAnswer,randomFlag);
+  play(option1,flagAnswer,randomFlag,countries);
+  play(option2,flagAnswer,randomFlag,countries);
+  play(option3,flagAnswer,randomFlag,countries);
+  play(option4,flagAnswer,randomFlag,countries);
 }
 
-function play(opt,fa,rf){
-  opt.onclick = () => {
-    if(opt.innerHTML == fa){
-      removed.push(`${fa}`);
-      countries.splice(countries.indexOf(rf), 1);
+function play(option,flagAnswer,randomFlag,countryArray){
+  option.onclick = () => {
+    if(option.innerHTML == flagAnswer){
+      removed.push(`${flagAnswer}`);
+      countryArray.splice(countryArray.indexOf(randomFlag), 1);
       score++;
-      scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
+      scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${flagAnswer}`;
       if(score > hiScore){
         hiScore = score;
         hiScoreDisplay.innerHTML = `Hi-Score: ${hiScore} / ${total}`;
@@ -86,10 +70,10 @@ function play(opt,fa,rf){
       playAllGamemode();
     }
     else {
-      removed.push(`${fa}`);
-      countries.splice(countries.indexOf(rf), 1);
+      removed.push(`${flagAnswer}`);
+      countryArray.splice(countryArray.indexOf(randomFlag), 1);
       wrong++;
-      scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${fa}`;
+      scoreDisplay.innerHTML = `${score} / ${total} WRONG It Was ${flagAnswer}`;
       playAllGamemode();
     }
   }

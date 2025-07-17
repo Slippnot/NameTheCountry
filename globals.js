@@ -7,6 +7,7 @@ export const option3 = document.getElementById("option3");
 export const option4 = document.getElementById("option4");
 export const option5 = document.getElementById("option5");
 export const option6 = document.getElementById("option6");
+export const option7 = document.getElementById("option7");
 export const optionBTN = document.querySelectorAll(".optionBTN");
 export const resetBtn = document.getElementById("resetBtn");
 export const scoreDisplay = document.getElementById("scoreDisplay");
@@ -52,6 +53,7 @@ export function displayGameChosen(){
   scoreDisplay.style.display = `block`;
   option5.style.display = `none`;
   option6.style.display = `none`;
+  option7.style.display = `none`;
 }
 
 export function displayOptions(opt1,opt2,opt3,opt4){
@@ -104,6 +106,27 @@ export function endGameAndReset(countryArray,score,total,wrong){
 
 export function displayImage(folderName,flagQuestion){
   countryFlag.src = `flags/${folderName}/${flagQuestion}.png`;
+  countryFlag.alt = `${flagQuestion}`;
+}
+
+export function setAndDisplayWrongAndCorrectAnswers(flagAnswer,wrong1,wrong2,wrong3){
+  let rng = getRandomNum();
+  if(rng == 1){
+    displayOptions(flagAnswer,wrong1,wrong2,wrong3);
+    preventsTwoCorrectAnswerShowing(flagAnswer);
+  }
+  if(rng == 2){
+    displayOptions(wrong1,flagAnswer,wrong2,wrong3);
+    preventsTwoCorrectAnswerShowing(flagAnswer);
+  }
+  if(rng == 3){
+    displayOptions(wrong1,wrong2,flagAnswer,wrong3);
+    preventsTwoCorrectAnswerShowing(flagAnswer);
+  }
+  if(rng == 4){
+    displayOptions(wrong1,wrong2,wrong3,flagAnswer);
+    preventsTwoCorrectAnswerShowing(flagAnswer);
+  }
 }
 
 export function getRandomNum(){
