@@ -17,6 +17,7 @@ export const asiaHiScoreDisplay = document.getElementById("asiaHiScoreDisplay");
 export const northAmericaHiScoreDisplay = document.getElementById("northAmericaHiScoreDisplay");
 export const southAmericaHiScoreDisplay = document.getElementById("southAmericaHiScoreDisplay");
 export const europeHiScoreDisplay = document.getElementById("europeHiScoreDisplay");
+export const hiScores = document.querySelectorAll(".hiScores");
 
 document.getElementById("homeButton").onclick = (() => {
   location.reload();
@@ -46,7 +47,6 @@ export var playAllEuropeFlagsGamemode = false;
 option6.onclick = () => {
   playAllEuropeFlagsGamemode = true;
 }
-
 
 export function displayGameChosen(){
   countryFlag.style.display = `block`;
@@ -85,12 +85,9 @@ export function preventsTwoCorrectAnswerShowing(fa){
 }
 
 export function makeHiScoresVisible(){
-  hiScoreDisplay.style.display = `block`;
-  africaHiScoreDisplay.style.display = `block`;
-  asiaHiScoreDisplay.style.display = `block`;
-  northAmericaHiScoreDisplay.style.display = `block`;
-  southAmericaHiScoreDisplay.style.display = `block`;
-  europeHiScoreDisplay.style.display = `block`;
+  hiScores.forEach((e) => {
+    e.style.display = `block`;
+  });
 }
 
 export function endGameAndReset(countryArray,score,total,wrong){
