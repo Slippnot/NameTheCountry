@@ -16,7 +16,7 @@ let total = southAmericanCountries.length;
 
 if(localStorage.getItem("southAmericaHiScoreSaved") !== null){
   let savedSaHiScore = JSON.parse(localStorage.getItem("southAmericaHiScoreSaved"));
-  global.southAmericaHiScoreDisplay.innerHTML = `South America HiScore ${savedSaHiScore} / ${total}`;
+  global.southAmericaHiScoreDisplay.innerHTML = `South America Hi-Score ${savedSaHiScore} / ${total}`;
   saHiScore = savedSaHiScore;
 }
 
@@ -34,10 +34,6 @@ function playSouthAmericanGamemode(){
   }
   if(wrong3 == wrong1 || wrong3 == wrong2){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
-  }
-
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
   }
 
   let flagQuestion = randomFlag;
@@ -64,7 +60,7 @@ function play(opt,fa,rf){
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
       if(score > saHiScore){
         saHiScore = score;
-        global.southAmericaHiScoreDisplay.innerHTML = `South America HiScore ${saHiScore} / ${total}`;
+        global.southAmericaHiScoreDisplay.innerHTML = `South America Hi-Score ${saHiScore} / ${total}`;
         localStorage.setItem("southAmericaHiScoreSaved", JSON.stringify(saHiScore));
       }
       playSouthAmericanGamemode();

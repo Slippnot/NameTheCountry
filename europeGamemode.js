@@ -16,7 +16,7 @@ let total = europeanCountries.length;
 
 if(localStorage.getItem("europeHiScoreSaved") !== null){
   let savedEuropeHiScore = JSON.parse(localStorage.getItem("europeHiScoreSaved"));
-  global.europeHiScoreDisplay.innerHTML = `Europe HiScore ${savedEuropeHiScore} / ${total}`;
+  global.europeHiScoreDisplay.innerHTML = `Europe Hi-Score ${savedEuropeHiScore} / ${total}`;
   europeHiScore = savedEuropeHiScore;
 }
 
@@ -34,10 +34,6 @@ function playEuropeanGamemode(){
   }
   if(wrong3 == wrong1 || wrong3 == wrong2){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
-  }
-
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
   }
 
   let flagQuestion = randomFlag;
@@ -64,7 +60,7 @@ function play(opt,fa,rf){
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
       if(score > europeHiScore){
         europeHiScore = score;
-        global.europeHiScoreDisplay.innerHTML = `Europe HiScore ${europeHiScore} / ${total}`;
+        global.europeHiScoreDisplay.innerHTML = `Europe Hi-Score ${europeHiScore} / ${total}`;
         localStorage.setItem("europeHiScoreSaved", JSON.stringify(europeHiScore));
       }
       playEuropeanGamemode();

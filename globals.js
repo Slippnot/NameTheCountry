@@ -17,6 +17,7 @@ export const asiaHiScoreDisplay = document.getElementById("asiaHiScoreDisplay");
 export const northAmericaHiScoreDisplay = document.getElementById("northAmericaHiScoreDisplay");
 export const southAmericaHiScoreDisplay = document.getElementById("southAmericaHiScoreDisplay");
 export const europeHiScoreDisplay = document.getElementById("europeHiScoreDisplay");
+export const plainHiScoreDisplay = document.getElementById("plainHiScoreDisplay");
 export const hiScores = document.querySelectorAll(".hiScores");
 
 document.getElementById("homeButton").onclick = (() => {
@@ -46,6 +47,10 @@ option5.onclick = () => {
 export var playAllEuropeFlagsGamemode = false;
 option6.onclick = () => {
   playAllEuropeFlagsGamemode = true;
+}
+export var playAllPlainFlagsGamemode = false;
+option7.onclick = () => {
+  playAllPlainFlagsGamemode = true;
 }
 
 export function displayGameChosen(){
@@ -107,6 +112,9 @@ export function displayImage(folderName,flagQuestion){
 }
 
 export function setAndDisplayWrongAndCorrectAnswers(flagAnswer,wrong1,wrong2,wrong3){
+  if(removed.includes("This Is Super Rare")){
+    removed.shift();
+  }
   let rng = getRandomNum();
   if(rng == 1){
     displayOptions(flagAnswer,wrong1,wrong2,wrong3);

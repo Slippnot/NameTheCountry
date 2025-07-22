@@ -36,10 +36,6 @@ function playAfricanGamemode(){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
   }
 
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
-  } // move somewhere else ??
-
   let flagQuestion = randomFlag;
   let flagAnswer = randomFlag;
 

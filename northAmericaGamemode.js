@@ -16,7 +16,7 @@ let total = northAmericanCountries.length;
 
 if(localStorage.getItem("northAmericaHiScoreSaved") !== null){
   let savedNaHiScore = JSON.parse(localStorage.getItem("northAmericaHiScoreSaved"));
-  global.northAmericaHiScoreDisplay.innerHTML = `North America HiScore ${savedNaHiScore} / ${total}`;
+  global.northAmericaHiScoreDisplay.innerHTML = `North America Hi-Score ${savedNaHiScore} / ${total}`;
   naHiScore = savedNaHiScore;
 }
 
@@ -34,10 +34,6 @@ function playNorthAmericanGamemode(){
   }
   if(wrong3 == wrong1 || wrong3 == wrong2){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
-  }
-
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
   }
 
   let flagQuestion = randomFlag;
@@ -64,7 +60,7 @@ function play(opt,fa,rf){
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
       if(score > naHiScore){
         naHiScore = score;
-        global.northAmericaHiScoreDisplay.innerHTML = `North America HiScore ${naHiScore} / ${total}`;
+        global.northAmericaHiScoreDisplay.innerHTML = `North America Hi-Score ${naHiScore} / ${total}`;
         localStorage.setItem("northAmericaHiScoreSaved", JSON.stringify(naHiScore));
       }
       playNorthAmericanGamemode();

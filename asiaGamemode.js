@@ -16,7 +16,7 @@ let total = asianCountries.length;
 
 if(localStorage.getItem("asiaHiScoreSaved") !== null){
   let savedAsiaHiScore = JSON.parse(localStorage.getItem("asiaHiScoreSaved"));
-  global.asiaHiScoreDisplay.innerHTML = `Asia HiScore ${savedAsiaHiScore} / ${total}`;
+  global.asiaHiScoreDisplay.innerHTML = `Asia Hi-Score ${savedAsiaHiScore} / ${total}`;
   asiaHiScore = savedAsiaHiScore;
 }
 
@@ -34,10 +34,6 @@ function playAsianGamemode(){
   }
   if(wrong3 == wrong1 || wrong3 == wrong2){
     wrong3 = removed[Math.floor(Math.random() * removed.length)];
-  }
-
-  if(removed.includes("This Is Super Rare")){
-    removed.shift();
   }
 
   let flagQuestion = randomFlag;
@@ -64,7 +60,7 @@ function play(opt,fa,rf){
       scoreDisplay.innerHTML = `${score} / ${total} CORRECT It Was ${fa}`;
       if(score > asiaHiScore){
         asiaHiScore = score;
-        global.asiaHiScoreDisplay.innerHTML = `Asia HiScore ${asiaHiScore} / ${total}`;
+        global.asiaHiScoreDisplay.innerHTML = `Asia Hi-Score ${asiaHiScore} / ${total}`;
         localStorage.setItem("asiaHiScoreSaved", JSON.stringify(asiaHiScore));
       }
       playAsianGamemode();
